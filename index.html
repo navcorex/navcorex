@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Navneet's Portfolio - Tech & Cyber Security Learner. Explore my projects and get in touch.">
+    <meta name="keywords" content="Navneet, Portfolio, Tech, Cyber Security, Web Development, Python">
+    <title>Navneet | Tech & Cyber Security Learner</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Add a favicon if you have one -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0f1a, #111827, #0f172a);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #c0c0c0, #ffffff, #c0c0c0);
+            -webkit-background-clip: text;
+            color: transparent;
+            text-decoration: none;
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            display: none; /* Hide on desktop */
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #38bdf8;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background: #0f172a;
+            padding-top: 80px;
+            transition: 0.5s;
+            z-index: 999;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .mobile-menu a:hover {
+            background: #1e293b;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('hero-bg.jpg') no-repeat center center/cover; /* Add a background image if available */
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 60px);
+            letter-spacing: 6px;
+            font-weight: 900;
+            background: linear-gradient(to right, #d9d9d9, #ffffff, #c0c0c0);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 4vw, 20px);
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .typing {
+            color: #38bdf8;
+            font-weight: bold;
+            font-size: 18px;
+            border-right: 2px solid #38bdf8;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #38bdf8; }
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 5vw, 35px);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: #38bdf8;
+            margin: 10px auto;
+        }
+
+        /* About */
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .about img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .about img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Projects */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.6);
+            border-color: #38bdf8;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        .card p {
+            margin-bottom: 15px;
+        }
+
+        .card a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .card a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact */
+        .contact {
+            text-align: center;
+        }
+
+        .contact a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            color: #38bdf8;
+            text-decoration: none;
+            border: 1px solid #38bdf8;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .contact a:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0f172a;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+            .menu {
+                display: none;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">NAVNEET</a>
+            <div class="menu">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="menu-btn" onclick="toggleMenu()">☰</div>
+        </nav>
+        <div class="mobile-menu" id="menu">
+            <a href="#home" onclick="toggleMenu()">Home</a>
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#projects" onclick="toggleMenu()">Projects</a>
+            <a href="#contact" onclick="toggleMenu()">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <h1>NAVNEET</h1>
+            <p>Tech & Cyber Security Learner</p>
+            <div class="typing" id="typing"></div>
+        </section>
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about">
+                <img src="nav.jpg" alt="Navneet's Photo">
+                <div class="about-text">
+                    <p>
+                        Hi, I'm Navneet. I am passionate about technology and cyber security. Currently learning web development, Python, and networking fundamentals. My goal is to build secure systems and become a skilled cyber professional. I enjoy exploring new technologies and applying them to real-world problems.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>Portfolio Website</h3>
+                    <p>My personal responsive portfolio website built with HTML, CSS, and JavaScript.</p>
+                    <a href="#" target="_blank">View Project</a>
+                </div>
+                <div class="card">
+                    <h3>Python Mini Tools</h3>
+                    <p>Simple automation and learning projects in Python, including scripts for data analysis and basic security tools.</p>
+                    <a href="#" target="_blank">View Project</a>
+                </div>
+                <div class="card">
+                    <h3>Cyber Study Notes</h3>
+                    <p>Comprehensive notes and practice exercises related to cyber security basics, including ethical hacking and network security.</p>
+                    <a href="#" target="https://repo.zenk-security.com/Magazine%20E-book/EN-Ethical%20Hacking.pdf">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact">
+                <a href="mailto:navneet9915129074@gmail.com">Email Me</a>
+                <a href="https://instagram.com/Rooh____x" target="_blank">Instagram</a>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a> <!-- Added LinkedIn for professionalism -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Navneet | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("active");
+        }
+
+        // Enhanced Typing Animation
+        const text = "Learning • Building • Securing";
+        let i = 0;
+        const typingElement = document.getElementById("typing");
+
+        function typing() {
+            if (i < text.length) {
+                typingElement.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typing, 150); // Slightly slower for better readability
+            }
+        }
+        typing();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
