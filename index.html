@@ -308,6 +308,19 @@ scroll-behavior:smooth;
                 font-size: 40px;
             }
         }
+
+    .slider{
+margin-top:30px;
+width:100%;
+max-width:900px;
+}
+
+.slider img{
+width:100%;
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,255,255,0.5);
+transition:0.5s;
+}
     </style>
 </head>
 <body>
@@ -335,7 +348,15 @@ scroll-behavior:smooth;
             <h1>NAVCOREX</h1>
             <p>Tech & Cyber Security Learner</p>
             <div class="typing" id="typing"></div>
-        </section>
+            
+            <div class="slider">
+            <a href="https://instagram.com/Rooh____x" 
+            target="_blank">
+            <img id="slide" src="banner1.jpg">
+            </a>
+            </div>
+
+            </section>
 
         <section id="about">
             <h2 class="section-title">About Me</h2>
@@ -422,5 +443,24 @@ scroll-behavior:smooth;
             });
         });
     </script>
+<script>
+
+const images = [
+"banner1.jpg",
+"banner2.jpg",
+"banner3.jpg"
+];
+
+let index = 0;
+
+setInterval(() => {
+
+index = (index + 1) % images.length;
+
+document.getElementById("slide").src = images[index];
+
+}, 3000);
+
+</script>
 </body>
 </html>
