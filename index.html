@@ -6,15 +6,29 @@
     <meta name="description" content="Navneet's Portfolio - Tech & Cyber Security Learner. Explore my projects and get in touch.">
     <meta name="keywords" content="Navneet, Portfolio, Tech, Cyber Security, Web Development, Python">
     <title>NAVCOREX | Tech & Cyber Security Learner</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Add a favicon if you have one -->
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            scroll-behavior: smooth;
-        }
+   <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<style>
+
+.gallery{
+display:flex;
+gap:20px;
+overflow-x:auto;
+padding:10px;
+}
+
+.gallery img{
+width:250px;
+border-radius:20px;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+scroll-behavior:smooth;
+} 
 
         body {
             background: linear-gradient(135deg, #0f0f1a, #111827, #0f172a);
@@ -326,8 +340,17 @@
         <section id="about">
             <h2 class="section-title">About Me</h2>
             <div class="about">
-                <img src="nav.jpg" alt="Navneet's Photo">
-                <div class="about-text">
+                <div class="gallery">
+
+<img src="nav1.jpg">
+
+<img src="nav2.jpg">
+
+<img src="nav3.jpg">
+
+</div>
+
+<div class="about-text">
                     <p>
                         Hi, I'm Navneet. I am passionate about technology and cyber security. Currently learning web development, Python, and networking fundamentals. My goal is to build secure systems and become a skilled cyber professional. I enjoy exploring new technologies and applying them to real-world problems.
                     </p>
