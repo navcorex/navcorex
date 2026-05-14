@@ -341,6 +341,27 @@ color:black;
 background:#f1f5f9;
 color:black;
 }   
+/* NAVCOREX VIDEO CSS START */
+.video-box{
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+#soundBtn{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #38bdf8;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+/* NAVCOREX VIDEO CSS END */
 </style>
 </head>
 <body>
@@ -368,6 +389,15 @@ color:black;
 
     <main>
         <section id="home" class="hero">
+        <div class="video-box">
+
+<video id="aiVideo" autoplay muted loop playsinline width="100%">
+  <source src="navcorex-ai.mp4" type="video/mp4">
+</video>
+
+<button id="soundBtn">🔇 Unmute</button>
+
+</div>
             <h1>NAVCOREX</h1>
             <p>Tech & Cyber Security Learner</p>
             <div class="typing" id="typing"></div>
@@ -522,5 +552,26 @@ toggleBtn.innerHTML = "🦹🏻‍♂️";
 }
 };
 </script>
+
+<!-- NAVCOREX VIDEO SOUND START -->
+
+<script>
+const video = document.getElementById("aiVideo");
+const soundBtn = document.getElementById("soundBtn");
+
+soundBtn.onclick = () => {
+
+    if(video.muted){
+        video.muted = false;
+        soundBtn.innerHTML = "🔊 Mute";
+    } else {
+        video.muted = true;
+        soundBtn.innerHTML = "🔇 Unmute";
+    }
+
+};
+</script>
+
+<!-- NAVCOREX VIDEO SOUND END -->
 </body>
 </html>
