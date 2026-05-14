@@ -332,7 +332,16 @@ border-radius:20px;
 box-shadow:0 0 25px rgba(0,255,255,0.5);
 transition:0.5s;
 }
-    </style>
+ .light-mode{
+background:white;
+color:black;
+}
+
+.light-mode .card{
+background:#f1f5f9;
+color:black;
+}   
+</style>
 </head>
 <body>
     <header>
@@ -344,6 +353,9 @@ transition:0.5s;
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
             </div>
+
+            <button id="theme-toggle">🌙</button>
+            
             <div class="menu-btn" onclick="toggleMenu()">☰</div>
         </nav>
         <div class="mobile-menu" id="menu">
@@ -496,6 +508,19 @@ document.getElementById("slide").src = images[index];
 
 }, 3000);
 
+</script>
+    <script>
+const toggleBtn = document.getElementById("theme-toggle");
+
+toggleBtn.onclick = () => {
+document.body.classList.toggle("light-mode");
+
+if(document.body.classList.contains("light-mode")){
+toggleBtn.innerHTML = "☀️";
+}else{
+toggleBtn.innerHTML = "🌙";
+}
+};
 </script>
 </body>
 </html>
