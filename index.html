@@ -397,6 +397,36 @@ color:white;
 }
 
 /* NAVCOREX LOADER END */
+    .navcorex-ticker{
+    width:100%;
+    overflow:hidden;
+    background:linear-gradient(90deg,#001f3f,#000814,#001f3f);
+    border-top:2px solid cyan;
+    border-bottom:2px solid cyan;
+    box-shadow:0 0 20px cyan;
+    padding:12px 0;
+}
+
+.ticker-text{
+    white-space:nowrap;
+    color:#00ffff;
+    font-size:18px;
+    font-weight:bold;
+    text-transform:uppercase;
+    text-shadow:0 0 10px cyan,
+                 0 0 20px cyan,
+                 0 0 40px cyan;
+    animation:tickerMove 15s linear infinite;
+}
+
+@keyframes tickerMove{
+    0%{
+        transform:translateX(100%);
+    }
+    100%{
+        transform:translateX(-100%);
+    }
+}
 
 </style>
 </head>
@@ -428,6 +458,12 @@ color:white;
             
             <div class="menu-btn" onclick="toggleMenu()">☰</div>
         </nav>
+
+       <div class="navcorex-ticker">
+  <div class="ticker-text" id="announcement">
+    Loading...
+  </div> 
+       </div>
         <div class="mobile-menu" id="menu">
             <a href="#home" onclick="toggleMenu()">Home</a>
             <a href="#about" onclick="toggleMenu()">About</a>
@@ -644,6 +680,7 @@ document.getElementById("loader").style.display = "none";
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+  import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyBRfu07ltKWZTSqBxfCc-PA8BrTROnQBWo",
@@ -658,6 +695,14 @@ document.getElementById("loader").style.display = "none";
 
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
+  const db = getDatabase();
+
+const announcementRef = ref(db, 'announcement');
+
+onValue(announcementRef, (snapshot) => {
+  const data = snapshot.val();
+  document.getElementById("announcement").innerText = data;
+});
 
   console.log("Firebase Connected 🚀");
 </script>
