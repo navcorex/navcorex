@@ -641,6 +641,26 @@ document.getElementById("loader").style.display = "none";
 </script>
 
 <!-- NAVCOREX LOADER SCRIPT END -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-analytics.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBRfu07ltKWZTSqBxfCc-PA8BrTROnQBWo",
+    authDomain: "navcorex-ai.firebaseapp.com",
+    databaseURL: "https://navcorex-ai-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "navcorex-ai",
+    storageBucket: "navcorex-ai.firebasestorage.app",
+    messagingSenderId: "230540410498",
+    appId: "1:230540410498:web:dd08a233621a43ad6c7e9b",
+    measurementId: "G-6HT0B7EX70"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+  console.log("Firebase Connected 🚀");
+</script>
 
 </body>
 </html>
