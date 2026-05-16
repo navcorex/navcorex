@@ -342,10 +342,21 @@ color:black;
 }   
 /* NAVCOREX VIDEO CSS START */
 .video-box{
-    position: relative;
-    width: 100%;
-    max-width: 1000px;
-    margin: auto;
+    width:100%;
+    max-width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    position:relative;
+    margin:auto;
+}
+
+#aiVideo{
+    width:100%;
+    height:auto;
+    max-height:80vh;
+    object-fit:cover;
 }
 
 #soundBtn{
