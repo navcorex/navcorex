@@ -400,10 +400,11 @@ color:white;
     .navcorex-ticker{
     width:100%;
     overflow:hidden;
-    background:linear-gradient(90deg,#001f3f,#000814,#001f3f);
-    border-top:2px solid cyan;
+    background:#000814;
+    position:relative;
+    z-index:999;
     border-bottom:2px solid cyan;
-    box-shadow:0 0 20px cyan;
+    border-top:1px solid cyan;
     padding:12px 0;
 }
 
@@ -413,9 +414,6 @@ color:white;
     font-size:18px;
     font-weight:bold;
     text-transform:uppercase;
-    text-shadow:0 0 10px cyan,
-                 0 0 20px cyan,
-                 0 0 40px cyan;
     animation:tickerMove 15s linear infinite;
 }
 
