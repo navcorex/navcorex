@@ -39,16 +39,51 @@ cursor:pointer;
 </head>
 
 <body>
-<script>
-let password = prompt("Enter Admin Password");
+<button id="loginBtn">Login with Google</button>
 
-if(password !== "Navcorex2025@"){
-    alert("Wrong Password");
-    window.location.href = "index.html";
-}
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBRfu07ltKWZTSqBxfCc-PA8BrTROnQBWo",
+  authDomain: "navcorex-ai.firebaseapp.com",
+  projectId: "navcorex-ai",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+document.getElementById("loginBtn").onclick = () => {
+  signInWithPopup(auth, provider)
+    .then((result) => {
+
+      if(result.user.email !== "navneet9915129074@gmail.com"){
+        alert("Access Denied");
+        auth.signOut();
+      } else {
+        alert("Welcome Admin 🔥");
+        document.getElementById("adminPanel").style.display = "block";
+      }
+
+    });
+};
+
+onAuthStateChanged(auth, (user) => {
+  if(user && user.email === "navneet9915129074@gmail.com"){
+    document.getElementById("adminPanel").style.display = "block";
+  }
+});
 </script>
   
-
+<div id="adminPanel" style="display:none;">
 <h1>NAVCOREX ADMIN PANEL</h1>
 
 <h3>Edit Announcement</h3>
@@ -103,6 +138,7 @@ alert("Saved Successfully");
 }
 
 </script>
-
+</div>
+    
 </body>
 </html>
