@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NAVCOREX ADMIN</title>
+
+<style>
+
+body{
+background:#06111f;
+color:white;
+font-family:Arial;
+padding:30px;
+}
+
+h1{
+color:cyan;
+}
+
+textarea{
+width:100%;
+height:150px;
+padding:10px;
+border:none;
+border-radius:10px;
+margin-top:10px;
+}
+
+button{
+margin-top:15px;
+padding:12px 20px;
+border:none;
+border-radius:10px;
+background:cyan;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>NAVCOREX ADMIN PANEL</h1>
+
+<h3>Edit Announcement</h3>
+
+<textarea id="announcementText"></textarea>
+
+<button onclick="saveData()">Save</button>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+getDatabase,
+ref,
+set,
+onValue
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+const firebaseConfig = {
+
+apiKey: "APNA_API_KEY",
+authDomain: "APNA_DOMAIN",
+databaseURL: "APNA_DATABASE_URL",
+projectId: "APNA_PROJECT_ID",
+storageBucket: "APNA_STORAGE",
+messagingSenderId: "APNA_ID",
+appId: "APNA_APP_ID"
+
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db = getDatabase();
+
+const announcementRef = ref(db, 'announcement');
+
+onValue(announcementRef, (snapshot)=>{
+
+document.getElementById("announcementText").value = snapshot.val();
+
+});
+
+window.saveData = function(){
+
+const text =
+document.getElementById("announcementText").value;
+
+set(ref(db,'announcement'), text);
+
+alert("Saved Successfully");
+
+}
+
+</script>
+
+</body>
+</html>
