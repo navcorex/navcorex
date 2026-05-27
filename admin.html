@@ -35,11 +35,54 @@ font-weight:bold;
 cursor:pointer;
 }
 
+.login-box{
+text-align:center;
+margin-top:120px;
+}
+
+.login-box h1{
+font-size:42px;
+color:cyan;
+letter-spacing:3px;
+margin-bottom:5px;
+}
+
+.login-box h2{
+font-size:24px;
+color:white;
+margin-bottom:10px;
+}
+
+.login-box p{
+color:#aaa;
+margin-bottom:30px;
+}
+
+#loginBtn{
+padding:14px 28px;
+border:none;
+border-radius:12px;
+background:cyan;
+color:black;
+font-weight:bold;
+font-size:16px;
+cursor:pointer;
+box-shadow:0 0 20px cyan;
+}
 </style>
 </head>
 
 <body>
+<div class="login-box">
+
+<h1>NAVCOREX</h1>
+<h2>ADMIN PANEL</h2>
+
+<p>Secure Firebase Admin Access</p>
+
 <button id="loginBtn">Login with Google</button>
+
+</div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
